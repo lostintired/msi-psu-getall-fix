@@ -1,4 +1,4 @@
-[English](README.md) | [中文](README.zh-CN.md) | [Español](README.es.md) | **Português**
+[English](README.md) | [中文](README.zh-CN.md) | [Español](README.es.md) | **Português** | [Türkçe](README.tr.md)
 
 ![MSI Center PSU GET_ALL fix](docs/images/banner.jpg)
 
