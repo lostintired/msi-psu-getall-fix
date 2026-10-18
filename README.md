@@ -1,3 +1,5 @@
+[English](README.md) | [中文](README.zh-CN.md) | [Español](README.es.md) | [Português](README.pt-BR.md)
+
 # MSI Center: fix for "Read data of PSU GET_ALL fail"
 
 If you have an MSI PSU with USB monitoring (found on a **MEG Ai1300P**) and MSI Center, its Power Supply Unit log is probably full of lines like this:
