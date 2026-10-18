@@ -1,5 +1,7 @@
 [English](README.md) | [中文](README.zh-CN.md) | [Español](README.es.md) | [Português](README.pt-BR.md)
 
+![MSI Center PSU GET_ALL fix](docs/images/banner.jpg)
+
 # MSI Center: fix for "Read data of PSU GET_ALL fail"
 
 If you have an MSI PSU with USB monitoring (found on a **MEG Ai1300P**) and MSI Center, its Power Supply Unit log is probably full of lines like this:
@@ -18,6 +20,8 @@ The module's reply check (`cPSU.Get` in `API_Power Supply Unit.dll` 1.0.0.38) tr
 
 So the error rate depends on whether your +12V happens to sit at 11.969 V. It has nothing to do with USB, cables, AIDA64/HWiNFO/iCUE or load. Details and evidence: [docs/technical.md](docs/technical.md).
 
+![Why MSI Center logs GET_ALL fail](docs/images/3-cause.png)
+
 ## Am I affected?
 
 Run this in PowerShell (no admin needed):
@@ -27,6 +31,8 @@ powershell -ExecutionPolicy Bypass -File scripts\check-log.ps1
 ```
 
 It counts `GET_ALL fail` lines per hour in today's log.
+
+![PSU log before and after the fix](docs/images/5-log.png)
 
 ## What the patch does
 
@@ -47,6 +53,8 @@ In practice:
 PSU behaviour is untouched. Rail mode, OCP and fan settings are not affected.
 
 **This repo contains no MSI files.** The patcher takes *your own* installed DLL, checks its SHA-256, and patches a copy.
+
+![Errors before and after the fix](docs/images/4-before-after.png)
 
 ## Easiest way: let an AI agent do it
 

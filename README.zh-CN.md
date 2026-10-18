@@ -1,5 +1,7 @@
 [English](README.md) | **中文** | [Español](README.es.md) | [Português](README.pt-BR.md)
 
+![MSI Center PSU GET_ALL fix](docs/images/banner.jpg)
+
 # MSI Center：修复 "Read data of PSU GET_ALL fail"
 
 如果你用的是带 USB 监控功能的微星电源（比如 **MEG Ai1300P**）并安装了 MSI Center，那么它的 Power Supply Unit 日志里很可能刷满了这样的行：
@@ -18,6 +20,8 @@ MSI Center 每秒会向电源请求一次全部读数（命令 `0xE0`，GET_ALL�
 
 所以报错多不多，取决于你的 +12V 是否刚好停在 11.969 V 上，和 USB、线材、AIDA64/HWiNFO/iCUE 或负载都没有关系。详细分析和证据见：[docs/technical.md](docs/technical.md)（英文）。
 
+![Why MSI Center logs GET_ALL fail](docs/images/3-cause.png)
+
 ## 我中招了吗？
 
 在 PowerShell 中运行（不需要管理员权限）：
@@ -27,6 +31,8 @@ powershell -ExecutionPolicy Bypass -File scripts\check-log.ps1
 ```
 
 它会按小时统计今天日志里的 `GET_ALL fail` 行数。
+
+![PSU log before and after the fix](docs/images/5-log.png)
 
 ## 补丁做了什么
 
@@ -47,6 +53,8 @@ powershell -ExecutionPolicy Bypass -File scripts\check-log.ps1
 电源本身的行为完全不受影响，单路/多路 12V 模式、OCP 和风扇设置都不会被改动。
 
 **本仓库不包含任何 MSI 的文件。** 补丁程序会读取*你自己*已安装的 DLL，校验其 SHA-256，然后只对副本打补丁。
+
+![Errors before and after the fix](docs/images/4-before-after.png)
 
 ## 最省事的办法：交给 AI 智能体
 

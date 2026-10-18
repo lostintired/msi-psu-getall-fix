@@ -1,5 +1,7 @@
 [English](README.md) | [中文](README.zh-CN.md) | [Español](README.es.md) | **Português**
 
+![MSI Center PSU GET_ALL fix](docs/images/banner.jpg)
+
 # MSI Center: correção para "Read data of PSU GET_ALL fail"
 
 Se você tem uma fonte MSI com monitoramento por USB (presente na **MEG Ai1300P**) e usa o MSI Center, o log do Power Supply Unit provavelmente está cheio de linhas como esta:
@@ -18,6 +20,8 @@ A verificação de resposta do módulo (`cPSU.Get` em `API_Power Supply Unit.dll
 
 Ou seja, a frequência do erro depende de o seu +12V cair justamente em 11,969 V. Não tem relação com USB, cabos, AIDA64/HWiNFO/iCUE nem com a carga. Detalhes e provas: [docs/technical.md](docs/technical.md) (em inglês).
 
+![Why MSI Center logs GET_ALL fail](docs/images/3-cause.png)
+
 ## Meu PC é afetado?
 
 Execute no PowerShell (não precisa de administrador):
@@ -27,6 +31,8 @@ powershell -ExecutionPolicy Bypass -File scripts\check-log.ps1
 ```
 
 O script conta as linhas `GET_ALL fail` por hora no log de hoje.
+
+![PSU log before and after the fix](docs/images/5-log.png)
 
 ## O que o patch faz
 
@@ -47,6 +53,8 @@ Na prática:
 O comportamento da fonte não é alterado. O modo single/multi rail, a OCP e configurações do ventilador não são afetados.
 
 **Este repositório não contém nenhum arquivo da MSI.** O patcher pega a DLL instalada *no seu PC*, confere o SHA-256 e aplica o patch em uma cópia.
+
+![Errors before and after the fix](docs/images/4-before-after.png)
 
 ## O jeito mais fácil: deixe um agente de IA fazer
 
